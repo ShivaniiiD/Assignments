@@ -1,0 +1,8 @@
+STATUS_MESSAGES = {
+    'active': 'Active',
+    'inactive': 'Inactive'
+}
+def process(d):
+    # Retrieve the status from the dictionary, default to 'Unknown' if not found
+    status = d.get('status', 'unknown')
+    print(STATUS_MESSAGES.get(status, 'Unknown'))
