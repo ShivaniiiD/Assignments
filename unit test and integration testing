@@ -1,0 +1,45 @@
+import unittest
+from services import calculate_discount_amount, compute_final_price
+
+class TestDiscountCalculation(unittest.TestCase):
+    def test_discount_amount(self):
+        # Unit test for calculate_discount_amount function
+        self.assertEqual(calculate_discount_amount(100, 10), 10)  # 10% of 100 is 10
+        self.assertEqual(calculate_discount_amount(200, 15), 30)  # 15% of 200 is 30
+        self.assertEqual(calculate_discount_amount(0, 50), 0)     # Edge case: price is 0
+        self.assertEqual(calculate_discount_amount(50, 0), 0)     # Edge case: no discount
+        self.assertEqual(calculate_discount_amount(100, 100), 100) # 100% discount
+
+class TestPriceAfterDiscount(unittest.TestCase):
+    def test_price_after_discount(self):
+        # Integration test for compute_final_price function
+        self.assertEqual(compute_final_price(100, 10), 90)  # 100 - 10% of 100 = 90
+        self.assertEqual(compute_final_price(200, 15), 170) # 200 - 15% of 200 = 170
+        self.assertEqual(compute_final_price(50, 0), 50)    # No discount applied
+        self.assertEqual(compute_final_price(0, 50), 0)     # Edge case: price is 0
+        self.assertEqual(compute_final_price(100, 100), 0)  # 100% discount
+
+
+Unit Test: calculate_discount_amount
+This unit test isolates and verifies the functionality of the calculate_discount_amount function.
+Unit test ensure that the function accurately calculates the discount amount for the given inputs (price and discount percentage).
+Test Scenarios:
+Tests with standard price and discount percentages, such as 10% of 100.
+Verifies that the function returns 0 when the price is zero, no matter the discount percentage.
+Tests the scenario where the discount percentage is zero. The discount should return 0, regardless of the price.
+Ensures that the function returns the full price as the discount (e.g., 100% discount results in the full price being the 
+discount amount).
+Tests for negative price inputs, where behavior can be validated against expected error handling or edge case management.
+
+Integration Test: compute_final_price
+This integration test ensures that the compute_final_price function interacts correctly with calculate_discount_amount and computes
+the final price based on the discount logic.
+It test the correct calculation of the final price after applying the discount.
+Test Scenarios:
+Ensures the function correctly applies the discount to the price and returns the correct final price.
+Edge Cases for Price and Discount:
+ Ensures that when the price is 0, the final price remains 0, regardless of the discount.
+ Verifies that when the discount is 0, the final price is the same as the original price.
+Confirms that a full discount results in a final price of 0.
+Checks how the function handles negative price values (whether it returns an error or processes it in a specific way).
+
