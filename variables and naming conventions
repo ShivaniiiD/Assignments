@@ -1,0 +1,9 @@
+# Function to multiply two numbers and add the second number to the result
+def multiply_and_add(x, y):
+    result = x * y + y
+    return result
+# Function to calculate the sum of two numbers and the result of another operation
+def calculate_sum_and_process(x, y):
+    sum_result = x + y
+    processed_result = multiply_and_add(x, y)
+    return sum_result, processed_result
