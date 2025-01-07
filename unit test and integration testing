@@ -21,25 +21,15 @@ class TestPriceAfterDiscount(unittest.TestCase):
 
 
 Unit Test: calculate_discount_amount
-This unit test isolates and verifies the functionality of the calculate_discount_amount function.
-Unit test ensure that the function accurately calculates the discount amount for the given inputs (price and discount percentage).
-Test Scenarios:
-Tests with standard price and discount percentages, such as 10% of 100.
-Verifies that the function returns 0 when the price is zero, no matter the discount percentage.
-Tests the scenario where the discount percentage is zero. The discount should return 0, regardless of the price.
-Ensures that the function returns the full price as the discount (e.g., 100% discount results in the full price being the 
-discount amount).
-Tests for negative price inputs, where behavior can be validated against expected error handling or edge case management.
+Testing with a regular price and discount percentage to check if the discount amount is calculated correctly.
+The function should return a discount amount of 0 if the price is 0, regardless of the discount percentage.
+If the discount percentage is 0, the discount amount should be 0, even if the price is a positive value.
+Negative prices should be handled as an error case. The function should not allow negative values.
+
 
 Integration Test: compute_final_price
-This integration test ensures that the compute_final_price function interacts correctly with calculate_discount_amount and computes
-the final price based on the discount logic.
-It test the correct calculation of the final price after applying the discount.
-Test Scenarios:
-Ensures the function correctly applies the discount to the price and returns the correct final price.
-Edge Cases for Price and Discount:
- Ensures that when the price is 0, the final price remains 0, regardless of the discount.
- Verifies that when the discount is 0, the final price is the same as the original price.
-Confirms that a full discount results in a final price of 0.
-Checks how the function handles negative price values (whether it returns an error or processes it in a specific way).
+The function should correctly apply the discount and return the final price.
+If the price is 0, the final price should remain 0, even with a discount applied.
+A 100% discount should make the final price 0.
+
 
